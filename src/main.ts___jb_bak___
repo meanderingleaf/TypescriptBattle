@@ -1,0 +1,60 @@
+import {Array} from "../../../../../../../../Program Files (x86)/JetBrains/PhpStorm 10.0.1/plugins/JavaScriptLanguage/typescriptCompiler/external/lib";
+/**
+ * Created by Travis on 9/6/2016.
+ */
+
+
+let gameBattleController = new BattleController();
+
+
+class BattleController {
+
+    public turn:number;
+    public actors:array;
+
+    constructor() {
+
+        let anEnemy =  new Enemy("#enemyView", "Jukeboxing Beetle", 12);
+        let aPlayer = new Player("#playerView", "Ace", 50);
+
+        this.actors = new Array();
+        this.actors.push(aPlayer);
+        this.actors.push(anEnemy);
+    }
+
+    public nextTurn() {
+        this.turn++;
+        this.turn = this.turn % this.actors.length;
+    }
+
+}
+
+
+class Actor {
+
+    public element:HTMLElement;
+    public txtName:HTMLElement;
+    public txtHp:HTMLElement;
+
+    public attack:number;
+    public defense:number;
+
+    constructor(public selector:string, public name:string, public hp:number) {
+        this.element = document.querySelector(selector);
+        this.txtName = document.querySelector();
+    }
+
+}
+
+class Hero extends Actor {
+
+    constructor(public selector:string, public name:string, public hp:number) {
+        super(selector, name, hp);
+    }
+}
+
+class Enemy extends Actor {
+    constructor(public selector:string, public name:string, public hp:number) {
+        super(selector, name, hp);
+    }
+}
